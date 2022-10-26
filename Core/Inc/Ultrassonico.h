@@ -19,6 +19,5 @@ uint32_t Medir_Distancia_INCH(void); //Vai retornar a distância em polegadas
 void Aproximacao(void); //Irá funcionar como um sensor de ré, o LED irá piscar com uma frequência inversamente proporcional a distância
 void Alerta_Distancia(uint32_t dist); //Recebe um valor de distância como parâmetro e quando o objeto estiver em uma distância menor um led irá acender como alerta
 void Delay_us(uint16_t us);
-uint32_t micros(void);
 
 #endif

@@ -51,11 +51,13 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint8_t timer_begin = 0;
+uint32_t tempo_micros = 0;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim3;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -198,6 +200,74 @@ void SysTick_Handler(void)
 /* please refer to the startup file (startup_stm32f1xx.s).                    */
 /******************************************************************************/
 
-/* USER CODE BEGIN 1 */
+/**
+  * @brief This function handles EXTI line2 interrupt.
+  */
+void EXTI2_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI2_IRQn 0 */
 
+  /* USER CODE END EXTI2_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(Echo_Pin);
+  /* USER CODE BEGIN EXTI2_IRQn 1 */
+
+  /* USER CODE END EXTI2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM1 break interrupt.
+  */
+void TIM1_BRK_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM1_BRK_IRQn 0 */
+
+  /* USER CODE END TIM1_BRK_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim1);
+  /* USER CODE BEGIN TIM1_BRK_IRQn 1 */
+
+  /* USER CODE END TIM1_BRK_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM1 update interrupt.
+  */
+void TIM1_UP_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM1_UP_IRQn 0 */
+
+  /* USER CODE END TIM1_UP_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim1);
+  /* USER CODE BEGIN TIM1_UP_IRQn 1 */
+
+  /* USER CODE END TIM1_UP_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM3 global interrupt.
+  */
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+
+  /* USER CODE END TIM3_IRQn 1 */
+}
+
+/* USER CODE BEGIN 1 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+if(timer_begin == 0){
+	HAL_TIM_Base_Start(&htim3);
+}
+else{
+	HAL_TIM_Base_Stop(&htim3);
+}
+}
+
+void TIM3_UP_IRQHandler(void){
+	++tempo_micros;
+}
 /* USER CODE END 1 */

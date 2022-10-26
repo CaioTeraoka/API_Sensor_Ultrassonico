@@ -19,10 +19,8 @@ uint32_t Medir_Distancia_CM(void){
 	uint32_t time2 = 0;
 	HAL_GPIO_WritePin(GPIOA, Trigger_Pin, 1);
 	Delay_us(10);
-	time1 = micros();
 	HAL_GPIO_WritePin(GPIOA, Trigger_Pin, 1);
 	while(HAL_GPIO_ReadPin(GPIOA, Echo_Pin) != 1){
-		time2 = micros();
 	};
 	return (time1-time2)/58;
 
@@ -34,10 +32,8 @@ uint32_t Medir_Distancia_INCH(void){
 	uint32_t time2 = 0;
 	HAL_GPIO_WritePin(GPIOA, Trigger_Pin, 1);
 	Delay_us(10);
-	time1 = micros();
 	HAL_GPIO_WritePin(GPIOA, Trigger_Pin, 1);
 	while(HAL_GPIO_ReadPin(GPIOA, Echo_Pin) != 1){
-		time2 = micros();
 	};
 	return (time1-time2)/148;
 
@@ -69,6 +65,4 @@ void Delay_us(uint16_t us){
 	while (__HAL_TIM_GET_COUNTER(&htim1) < us);
 }
 
-uint32_t micros(void) {
 
-}
