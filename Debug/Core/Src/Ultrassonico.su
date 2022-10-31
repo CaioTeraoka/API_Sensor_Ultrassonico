@@ -1,0 +1,5 @@
+../Core/Src/Ultrassonico.c:20:10:Medir_Distancia_CM	16	static
+../Core/Src/Ultrassonico.c:33:10:Medir_Distancia_INCH	16	static
+../Core/Src/Ultrassonico.c:46:6:Aproximacao	16	static
+../Core/Src/Ultrassonico.c:57:6:Alerta_Distancia	24	static
+../Core/Src/Ultrassonico.c:66:6:Delay_us	16	static

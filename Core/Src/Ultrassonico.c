@@ -1,6 +1,6 @@
 /* DATA: 12/10/2022
  * UNIVERSIDADE FEDERAL DE MINAS GERAIS
- * AUTOR: Caio Teraoka de Menezes Câmara
+ * AUTOR: Caio Teraoka de Menezes Câmara e Cristovão Eustaquio da Silva
  * VERSÃO 1.0
  * API: Ultrassonico
  * DESCRIÇÃO: API desenvolvida para uso do módulo Sensor Ultrassônico HC-SR04. Suas funções contam com
@@ -13,6 +13,9 @@
 #include "main.h"
 #include "Ultrassonico.h"
 
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim3;
+int tempo = 0;
 
 uint32_t Medir_Distancia_CM(void){
 	uint32_t time1 = 0;

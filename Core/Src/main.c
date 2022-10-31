@@ -39,11 +39,10 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-TIM_HandleTypeDef htim1;
-TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN PV */
-
+TIM_HandleTypeDef htim1;
+TIM_HandleTypeDef htim3;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

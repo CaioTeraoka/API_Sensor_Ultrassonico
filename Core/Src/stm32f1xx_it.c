@@ -26,7 +26,9 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim3;
+extern int tempo;
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -51,13 +53,11 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t timer_begin = 0;
-uint32_t tempo_micros = 0;
+uint16_t timer_begin = 0;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern TIM_HandleTypeDef htim1;
-extern TIM_HandleTypeDef htim3;
+
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -206,7 +206,14 @@ void SysTick_Handler(void)
 void EXTI2_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI2_IRQn 0 */
-
+	if(timer_begin == 0){
+		__HAL_TIM_SET_COUNTER(&htim3, 0);
+		timer_begin = 1;
+	}
+	else{
+		tempo = __HAL_TIM_GET_COUNTER(&htim3);
+		timer_begin = 0;
+	}
   /* USER CODE END EXTI2_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(Echo_Pin);
   /* USER CODE BEGIN EXTI2_IRQn 1 */
@@ -257,17 +264,5 @@ void TIM3_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-if(timer_begin == 0){
-	HAL_TIM_Base_Start(&htim3);
-}
-else{
-	HAL_TIM_Base_Stop(&htim3);
-}
-}
 
-void TIM3_UP_IRQHandler(void){
-	++tempo_micros;
-}
 /* USER CODE END 1 */

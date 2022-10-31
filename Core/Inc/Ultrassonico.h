@@ -1,6 +1,6 @@
 /* DATA: 12/10/2022
  * UNIVERSIDADE FEDERAL DE MINAS GERAIS
- * AUTOR: Caio Teraoka de Menezes Câmara
+ * AUTOR: Caio Teraoka de Menezes Câmara e Cristovão Eustaquio da Silva
  * VERSÃO 1.0
  * API: Ultrassonico
  * DESCRIÇÃO: API desenvolvida para uso do módulo Sensor Ultrassônico HC-SR04. Suas funções contam com
