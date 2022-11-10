@@ -59,9 +59,6 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define Trigger_Pin GPIO_PIN_1
 #define Trigger_GPIO_Port GPIOA
-#define Echo_Pin GPIO_PIN_2
-#define Echo_GPIO_Port GPIOA
-#define Echo_EXTI_IRQn EXTI2_IRQn
 #define LED_1_Pin GPIO_PIN_4
 #define LED_1_GPIO_Port GPIOA
 #define LED_2_Pin GPIO_PIN_5

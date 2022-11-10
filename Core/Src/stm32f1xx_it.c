@@ -203,27 +203,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI line2 interrupt.
-  */
-void EXTI2_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI2_IRQn 0 */
-	if(timer_begin == 0){
-		tempo1 = __HAL_TIM_GET_COUNTER(&htim3);
-		timer_begin = 1;
-	}
-	else{
-		tempo = __HAL_TIM_GET_COUNTER(&htim3) - tempo1;
-		timer_begin = 0;
-	}
-  /* USER CODE END EXTI2_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(Echo_Pin);
-  /* USER CODE BEGIN EXTI2_IRQn 1 */
-
-  /* USER CODE END EXTI2_IRQn 1 */
-}
-
-/**
   * @brief This function handles TIM1 capture compare interrupt.
   */
 void TIM1_CC_IRQHandler(void)
